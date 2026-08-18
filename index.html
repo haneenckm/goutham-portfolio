@@ -14,6 +14,19 @@
   <meta property="og:image" content="">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://goutham-portfolio.example.com/">
+
+  <!-- PWA & Mobile Web App Meta Tags & Icons -->
+  <meta name="theme-color" content="#6657E8">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Goutham">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -2178,6 +2191,161 @@
       color: #ffffff;
       transform: scale(1.08) rotate(45deg);
     }
+
+    /* PWA Install Banner & Modal Styles */
+    .btn-pwa {
+      background: linear-gradient(135deg, var(--purple), var(--purple-deep));
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(102, 87, 232, 0.3);
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .btn-pwa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(102, 87, 232, 0.45);
+    }
+    .pwa-banner {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(140%);
+      background: #111118;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      z-index: 9999;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+      color: #fff;
+      transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+      width: calc(100% - 32px);
+      max-width: 440px;
+    }
+    .pwa-banner.show {
+      transform: translateX(-50%) translateY(0);
+    }
+    .pwa-banner-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+    .pwa-banner-info {
+      flex: 1;
+    }
+    .pwa-banner-info strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .pwa-banner-info span {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .pwa-banner-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pwa-close-btn {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 22px;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+    .pwa-close-btn:hover {
+      color: #fff;
+    }
+    .pwa-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .pwa-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .pwa-modal-card {
+      background: #181822;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 28px;
+      max-width: 400px;
+      width: 100%;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      transform: scale(0.92);
+      transition: transform 0.3s ease;
+    }
+    .pwa-modal.active .pwa-modal-card {
+      transform: scale(1);
+    }
+    .pwa-modal-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 14px;
+      margin-bottom: 8px;
+    }
+    .pwa-modal-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .pwa-steps {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    .pwa-step-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pwa-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--purple);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 
@@ -2200,6 +2368,12 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-cta">
+        <button class="btn-pwa" id="pwaNavBtn" aria-label="Add app to home screen">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          Add App
+        </button>
         <div class="about-actions">
           <a href="#contact" class="btn btn-primary">Let's Connect</a>
           <a href="https://www.instagram.com/reel/DRlyEd_Cfui/?igsh=MTBrdmNpc3FreWI0eg==" target="_blank" rel="noopener"
@@ -2219,6 +2393,12 @@
     <a href="#skills">Skills</a>
     <a href="#journey">Journey</a>
     <a href="#contact">Contact</a>
+    <button class="btn-pwa" id="pwaMobileBtn" style="margin: 12px auto 0; width: fit-content;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M12 5v14M5 12h14"/>
+      </svg>
+      Add App to Home Screen
+    </button>
     <div class="mm-contact">
       +91 8891357156 · gouthamkrish357@gmail.com
     </div>
@@ -3178,6 +3358,110 @@
       </div>
     </div>
   </div>
+
+  <!-- PWA INSTALL BANNER -->
+  <div class="pwa-banner" id="pwaBanner">
+    <img src="icon-192.png" alt="Goutham App Icon" class="pwa-banner-icon">
+    <div class="pwa-banner-info">
+      <strong>Goutham's App</strong>
+      <span>Add to Home Screen for fast access</span>
+    </div>
+    <div class="pwa-banner-actions">
+      <button class="btn-pwa" id="pwaBannerInstallBtn">Install</button>
+      <button class="pwa-close-btn" id="pwaBannerCloseBtn" aria-label="Close">&times;</button>
+    </div>
+  </div>
+
+  <!-- PWA IOS INSTALL MODAL -->
+  <div class="pwa-modal" id="pwaIosModal">
+    <div class="pwa-modal-card">
+      <img src="apple-touch-icon.png" alt="App Icon" style="width:64px; height:64px; border-radius:16px; margin:0 auto;">
+      <h3>Add to Home Screen</h3>
+      <p>Install Goutham Krishna K S's portfolio as an app on your iPhone or iPad.</p>
+      <div class="pwa-steps">
+        <div class="pwa-step-item">
+          <span class="pwa-step-num">1</span>
+          <span>Tap the <strong>Share</strong> button <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; display:inline;"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> in Safari.</span>
+        </div>
+        <div class="pwa-step-item">
+          <span class="pwa-step-num">2</span>
+          <span>Scroll down & tap <strong>Add to Home Screen</strong> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; display:inline;"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>.</span>
+        </div>
+        <div class="pwa-step-item">
+          <span class="pwa-step-num">3</span>
+          <span>Tap <strong>Add</strong> in top right corner. Done! 🎉</span>
+        </div>
+      </div>
+      <button class="btn btn-primary" style="width:100%; border-radius:14px; padding: 10px;" id="pwaIosCloseBtn">Got it</button>
+    </div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').then((reg) => {
+          console.log('PWA ServiceWorker registered');
+        }).catch((err) => {
+          console.log('PWA ServiceWorker failed:', err);
+        });
+      });
+    }
+
+    let deferredPrompt;
+    const pwaBanner = document.getElementById('pwaBanner');
+    const pwaBannerInstallBtn = document.getElementById('pwaBannerInstallBtn');
+    const pwaNavBtn = document.getElementById('pwaNavBtn');
+    const pwaMobileBtn = document.getElementById('pwaMobileBtn');
+    const pwaIosModal = document.getElementById('pwaIosModal');
+    const pwaIosCloseBtn = document.getElementById('pwaIosCloseBtn');
+    const pwaBannerCloseBtn = document.getElementById('pwaBannerCloseBtn');
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (!localStorage.getItem('pwaBannerDismissed')) {
+        setTimeout(() => {
+          if (pwaBanner) pwaBanner.classList.add('show');
+        }, 2500);
+      }
+    });
+
+    function triggerInstall() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted PWA prompt');
+          }
+          deferredPrompt = null;
+          if (pwaBanner) pwaBanner.classList.remove('show');
+        });
+      } else if (isIOS) {
+        if (pwaIosModal) pwaIosModal.classList.add('active');
+      } else {
+        if (pwaIosModal) pwaIosModal.classList.add('active');
+      }
+    }
+
+    if (pwaBannerInstallBtn) pwaBannerInstallBtn.addEventListener('click', triggerInstall);
+    if (pwaNavBtn) pwaNavBtn.addEventListener('click', triggerInstall);
+    if (pwaMobileBtn) pwaMobileBtn.addEventListener('click', triggerInstall);
+
+    if (pwaBannerCloseBtn) {
+      pwaBannerCloseBtn.addEventListener('click', () => {
+        if (pwaBanner) pwaBanner.classList.remove('show');
+        localStorage.setItem('pwaBannerDismissed', 'true');
+      });
+    }
+
+    if (pwaIosCloseBtn) {
+      pwaIosCloseBtn.addEventListener('click', () => {
+        if (pwaIosModal) pwaIosModal.classList.remove('active');
+      });
+    }
+  </script>
 
 </body>
 
