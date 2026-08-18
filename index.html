@@ -2357,65 +2357,75 @@
       .section {
         padding: 64px 0;
       }
-      .section-head {
-        margin-bottom: 36px;
-      }
-      .section-head h2 {
-        font-size: clamp(28px, 6.5vw, 42px);
+    /* ==========================================================================
+       COMPREHENSIVE MOBILE RESPONSIVENESS & HEADER-HERO OVERLAP FIX (< 768px)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      /* Fixed Navbar Frosted Solid Background on Mobile (Prevents Hero Collision) */
+      header.nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 99 !important;
+        background: rgba(255, 255, 255, 0.96) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08) !important;
+        padding: 12px 0 !important;
       }
 
-      /* Navbar Clean Layout */
-      .nav-cta .about-actions {
-        display: none;
+      .nav-inner {
+        padding: 0;
       }
       .logo {
-        font-size: 22px;
+        font-size: 20px;
+      }
+      .nav-cta {
+        gap: 10px;
+      }
+      .nav-cta .about-actions {
+        display: none !important;
+      }
+      .btn-pwa {
+        padding: 6px 12px;
+        font-size: 12px;
       }
 
-      /* Mobile Drawer Menu */
-      .mobile-menu {
-        padding: 90px 24px 40px;
-        justify-content: flex-start;
-        overflow-y: auto;
-        gap: 18px;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-      }
-      .mobile-menu a {
-        font-size: clamp(24px, 7vw, 34px);
-      }
-
-      /* Hero Section Mobile */
+      /* Hero Section Top Clearance */
       .hero {
-        padding: 125px 0 50px;
+        padding-top: 130px !important;
+        padding-bottom: 50px !important;
+        position: relative;
+        z-index: 1;
       }
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 32px;
       }
       .hero-name {
-        font-size: clamp(34px, 9.5vw, 54px);
-        line-height: 1.08;
+        font-size: clamp(32px, 8.5vw, 50px);
+        line-height: 1.1;
+        margin-top: 10px;
       }
       .hero-role {
-        font-size: 12.5px;
+        font-size: 12px;
         gap: 6px;
       }
       .hero-copy {
         font-size: 15px;
-        margin-top: 16px;
+        margin-top: 14px;
       }
       .hero-meta {
         font-size: 13px;
-        gap: 10px 18px;
-        margin-top: 20px;
+        gap: 8px 16px;
+        margin-top: 18px;
       }
       .hero-actions {
         flex-direction: column;
         width: 100%;
         gap: 10px;
-        margin-top: 26px;
+        margin-top: 24px;
       }
       .hero-actions .btn {
         width: 100%;
@@ -2428,45 +2438,73 @@
         border-radius: var(--radius-lg);
       }
       .hero-visual .tag {
-        bottom: 14px;
-        left: 14px;
-        right: 14px;
-        padding: 12px 16px;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        padding: 12px 14px;
       }
       .hero-visual .tag .v {
-        font-size: 15px;
+        font-size: 14px;
+      }
+
+      /* Hide floating badge on mobile so it doesn't collide with hero or nav bar */
+      .float-badge {
+        display: none !important;
+      }
+
+      /* Mobile Drawer Menu */
+      .mobile-menu {
+        padding: 85px 24px 40px;
+        justify-content: flex-start;
+        overflow-y: auto;
+        gap: 18px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      .mobile-menu a {
+        font-size: clamp(24px, 7vw, 34px);
+      }
+
+      /* Section Spacing */
+      .container {
+        padding: 0 20px;
+      }
+      .section {
+        padding: 60px 0;
+      }
+      .section-head {
+        margin-bottom: 32px;
+      }
+      .section-head h2 {
+        font-size: clamp(26px, 6vw, 38px);
       }
 
       /* Stats Block */
       .stats {
-        padding: 36px 0;
+        padding: 32px 0;
       }
       .stats-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 14px;
       }
       .stat-item {
         background: #fff;
         border: 1px solid var(--border);
         border-radius: var(--radius-md);
-        padding: 20px 24px;
+        padding: 18px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
       }
       .stat-num {
-        font-size: 38px;
-      }
-      .stat-label {
-        margin-top: 0;
-        text-align: right;
-        font-size: 13px;
+        font-size: 36px;
       }
 
       /* About Section */
       .about-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 28px;
       }
       .about-copy p {
         font-size: 15px;
@@ -2484,67 +2522,48 @@
       /* Project Cards Mobile Responsiveness Fix */
       .project-card {
         aspect-ratio: auto !important;
-        min-height: 420px;
+        min-height: 400px;
         border-radius: var(--radius-lg);
         margin-bottom: 24px;
       }
       .project-content {
-        padding: 20px;
+        padding: 18px;
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
+        gap: 14px;
       }
       .project-title {
-        font-size: clamp(20px, 5.5vw, 28px);
+        font-size: clamp(20px, 5.5vw, 26px);
       }
       .project-desc {
-        font-size: 14px;
-        margin-top: 8px;
+        font-size: 13.5px;
+        margin-top: 6px;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
-      .arrow-btn {
-        width: 44px;
-        height: 44px;
-        align-self: flex-end;
-      }
 
-      /* Skills & Pills Mobile */
-      .pill-row {
-        gap: 8px;
-      }
-      .pill {
-        padding: 8px 14px;
-        font-size: 13px;
-      }
-
-      /* Journey Timeline */
+      /* Journey & Cards */
       .journey {
         padding-left: 20px;
       }
       .journey-item::before {
         left: -26px;
       }
-
-      /* Stack Row & Cards */
       .stack-row {
-        padding: 16px 20px;
+        padding: 16px;
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
       }
-      .stack-row .date {
-        align-self: flex-start;
-      }
       .info-card {
-        padding: 22px;
+        padding: 20px;
       }
 
-      /* Final CTA */
+      /* Final CTA & Footer */
       .final-cta {
-        padding: 50px 20px;
+        padding: 44px 18px;
         border-radius: var(--radius-lg);
       }
       .final-actions {
@@ -2556,50 +2575,41 @@
         width: 100%;
         justify-content: center;
       }
-
-      /* Footer */
       .footer-top {
         flex-direction: column;
-        gap: 24px;
+        gap: 20px;
       }
       .footer-bottom {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 16px;
-      }
-
-      /* Floating Badge on Mobile */
-      .float-badge {
-        bottom: 16px;
-        left: 16px;
-        right: 16px;
-        transform: none;
-        width: auto;
-        justify-content: center;
+        gap: 14px;
       }
 
       /* PWA Banner */
       .pwa-banner {
-        bottom: 16px;
+        bottom: 14px;
         width: calc(100% - 24px);
-        padding: 12px 16px;
+        padding: 12px 14px;
       }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 440px) {
       .container {
         padding: 0 16px;
       }
+      .hero {
+        padding-top: 118px !important;
+      }
       .hero-name {
-        font-size: 32px;
+        font-size: clamp(28px, 8.5vw, 38px);
       }
       .project-card {
-        min-height: 440px;
+        min-height: 420px;
       }
       .btn {
-        padding: 12px 18px;
-        font-size: 13.5px;
+        padding: 12px 16px;
+        font-size: 13px;
       }
     }
   </style>
